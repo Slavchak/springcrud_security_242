@@ -36,28 +36,17 @@
                     <input type="email" th:field="*{email}" class="form-control" required minlength="2" maxlength="30"/>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="roles" class="form-control-label">Role</label>
-                <select class="form-control" id="roles" name="roles" multiple="multiple">
-                    <option th:field="*{roles}" th:each="role : ${all_role}"
-                            th:value="${role.role}"
-                            th:text="${role.role}">
-
-                    </option>
-                </select>
+            <div class="form-group row">
+                <label for="role" class="col-sm-4 col-form-label">Role:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="role" name="role" size="2" multiple="multiple">
+                        <option th:field="*{roles}" th:each="role : ${all_role}"
+                                th:value="${role.name}"
+                                th:text="${role.name}">
+                        </option>
+                    </select>
+                </div>
             </div>
-
-<!--            <div class="form-group row">-->
-<!--                <label for="role" class="col-sm-4 col-form-label">Role:</label>-->
-<!--                <div class="col-sm-8">-->
-<!--                    <select class="form-control" id="role" name="role" size="2" multiple="multiple">-->
-<!--                        <option th:field="*{roles}" th:each="role : ${all_role}"-->
-<!--                                th:value="${role.role}"-->
-<!--                                th:text="${role.role}">-->
-<!--                        </option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary m-2">Save</button>
                 <button type="reset" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>

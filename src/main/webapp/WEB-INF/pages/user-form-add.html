@@ -42,8 +42,8 @@
                 <div class="col-sm-8">
                     <select class="form-control" id="role" name="role" size="2" multiple="multiple">
                         <option th:field="*{roles}" th:each="role : ${all_role}"
-                                th:value="${role.role}"
-                                th:text="${role.role}">
+                                th:value="${role.name}"
+                                th:text="${role.name}">
                         </option>
                     </select>
                 </div>

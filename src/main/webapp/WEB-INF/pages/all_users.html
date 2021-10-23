@@ -28,7 +28,7 @@
                 <td>
                     <ul>
                         <li th:each="role : ${user.getRoles()}">
-                            <div th:text="${role.getRole()}"></div>
+                            <div th:text="${role.getName()}"></div>
                         </li>
                     </ul>
                 </td>

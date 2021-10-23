@@ -10,11 +10,12 @@
 <div class="container align-content-center">
     <div class="row align-items-center">
         <div class="col-lg-4 md-5 offset-4">
+            <h3 th:text="'Hello, ' + ${user.name} + ', here is your data:'"></h3>
             <p th:text="'Name: ' + ${user.name}">Name</p>
             <p th:text="'Age: ' + ${user.age}">Age</p>
             <p th:text="'Password: ' + ${user.password}">Password</p>
             <p th:text="'Email: ' + ${user.email}">Email</p>
-<!--            <p th:text="'Roles: ' + ${role.role}">Roles</p>-->
+            <p th:text="'Roles: ' + ${user.roles}">Roles</p>
         </div>
         <div class="text-center"><a href="/logout">Logout</a></div>
     </div>

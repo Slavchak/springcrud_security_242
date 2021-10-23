@@ -61,11 +61,8 @@ public class AdminController {
     }
 
     @GetMapping("/user-edit/{id}")
-    public String updateUserForm (          @PathVariable("id") Long id, ModelMap modelMap) {
+    public String updateUserForm (@PathVariable("id") Long id, ModelMap modelMap) {
         User user = userService.getById(id);
-//        if (!user.getRoles().isEmpty()) {
-//            user.setRoles(null);
-//        }
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("all_role", roleService.allRoles());
         return "user-form-update";

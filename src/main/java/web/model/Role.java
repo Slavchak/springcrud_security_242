@@ -1,6 +1,5 @@
 package web.model;
 
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -11,42 +10,61 @@ import java.util.Set;
 // Имя роли должно соответствовать шаблону: «ROLE_ИМЯ», например, ROLE_USER.
 
 @Entity
-@Data
-@Table(name = "userRole")
+@Table(name = "roles")
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "role", unique = true)
-    private String role;
+    @Column(name = "name", unique = true)
+    private String name;
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public Role() {
+    public Role() { }
 
+    public Role(Long id, String name, Set<User> users) {
+        this.id = id;
+        this.name = name;
+        this.users = users;
     }
 
-    public Role(String role) {
-        this.role = role;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof Role;
     }
 
     @Override
     public String getAuthority() {
-        return getRole();
+        return getName();
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role role1 = (Role) o;
-        return Objects.equals(id, role1.id) && Objects.equals(role, role1.role);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, role);
+    public String toString() {
+        return name;
     }
 }
