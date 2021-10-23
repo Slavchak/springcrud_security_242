@@ -1,0 +1,25 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}"/>
+    <title>User page</title>
+</head>
+
+<body>
+<div class="container align-content-center">
+    <div class="row align-items-center">
+        <div class="col-lg-4 md-5 offset-4">
+            <p th:text="'Name: ' + ${user.name}">Name</p>
+            <p th:text="'Age: ' + ${user.age}">Age</p>
+            <p th:text="'Password: ' + ${user.password}">Password</p>
+            <p th:text="'Email: ' + ${user.email}">Email</p>
+<!--            <p th:text="'Roles: ' + ${role.role}">Roles</p>-->
+        </div>
+        <div class="text-center"><a href="/logout">Logout</a></div>
+    </div>
+</div>
+
+</body>
+
+</html>

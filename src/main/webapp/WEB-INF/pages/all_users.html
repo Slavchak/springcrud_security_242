@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+</head>
+<body>
+        <h1>Table users</h1>
+        <table th:border="2" th:width="600px">
+            <thead>
+            <tr th:align="center">
+                <th>Id</th>
+                <th>Name</th>
+<!--                <th>Password</th>-->
+                <th>Age</th>
+                <th>Email</th>
+                <th>Roles</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:align="center" th:each="user : ${users}">
+                <td th:text="${user.getId()}"></td>
+                <td th:text="${user.getName()}"></td>
+<!--                <td th:text="${user.getPassword()}"></td>-->
+                <td th:text="${user.getAge()}"></td>
+                <td th:text="${user.getEmail()}"></td>
+                <td>
+                    <ul>
+                        <li th:each="role : ${user.getRoles()}">
+                            <div th:text="${role.getRole()}"></div>
+                        </li>
+                    </ul>
+                </td>
+                <td><a class="h4 mr-5" th:href="@{/user-edit/{id}(id=${user.getId()})}">Edit</a></td>
+                <td><a class="h4" th:href="@{user-delete/{id}(id=${user.getId()})}">Delete</a></td>
+<!--                <td><form th:method="DELETE" th:action="@{/user-delete/{id}(id=${user.getId()})}">-->
+<!--                    <input type="submit" value="Delete" >-->
+<!--                </form>-->
+<!--                </td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/new-user">Add user</a> </p>
+</div>
+        <div><a href="/logout">Logout</a></div>
+</body>
+</html>
